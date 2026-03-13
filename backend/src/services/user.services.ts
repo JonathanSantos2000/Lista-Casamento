@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/user.utils";
-import { IUser } from "../models/user.model";
+import User, { IUser } from "../models/user.model";
 
 interface IUserInput {
   UsuNom: string;
@@ -29,7 +29,6 @@ export const loginUser = async ({
   UsuSen: string;
 }): Promise<IUser> => {
   const user = await User.findOne({ UsuEma });
-  console.log(user);
   if (!user) throw new Error("Invalid credentials");
 
   const isMatch = await bcrypt.compare(UsuSen, user.UsuSen);

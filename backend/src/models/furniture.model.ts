@@ -1,37 +1,42 @@
 import { Schema, model, Document, Types } from "mongoose";
 
-export interface IFurniture extends Document {
-  FurId: number;
-  FurDes: string;
+interface Rooms {
   FurComId: Types.ObjectId;
-  FurComDes?: string;
+  FurComDes: string;
+}
+
+export interface IFurniture extends Document {
+  FurDes: string;
+  FurRooms: Rooms[];
+
   FurVlrIte: number;
   FurVlrAre: number;
   FurVlrPer: number;
+
+  FurImgPath: string;
+  FurImgLocal: boolean;
 }
 
 const FurnitureSchema = new Schema<IFurniture>(
   {
-    FurId: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
-
     FurDes: {
       type: String,
       required: true,
     },
+    FurRooms: [
+      {
+        FurComId: {
+          type: Schema.Types.ObjectId,
+          ref: "Rooms",
+          required: true,
+        },
 
-    FurComId: {
-      type: Schema.Types.ObjectId,
-      ref: "Comodo",
-      required: true,
-    },
-
-    FurComDes: {
-      type: String,
-    },
+        FurComDes: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
 
     FurVlrIte: {
       type: Number,
@@ -47,10 +52,18 @@ const FurnitureSchema = new Schema<IFurniture>(
       type: Number,
       default: 0,
     },
+    FurImgPath: {
+      type: String,
+      required: true,
+    },
+    FurImgLocal: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 export default model<IFurniture>("Furniture", FurnitureSchema);
