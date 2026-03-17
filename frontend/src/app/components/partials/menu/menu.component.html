@@ -1,0 +1,45 @@
+<button class="btn-open-menu" (click)="open_menu()" *ngIf="menu_level !== 'menu'">
+  <i class="bi bi-list"></i>
+</button>
+<div class="component-menu" *ngIf="menu_level === 'menu'">
+  <div class="top_menu">
+    <div class="user">
+      <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="" />
+      <h3>A & J</h3>
+    </div>
+    <div class="buttons">
+      <button class="btn-close-menu" (click)="back_menu()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  </div>
+  <div class="center_menu">
+    <ul>
+      <li>
+        <a [routerLink]="['/accounts']" routerLinkActive="router-link-active">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#">O Casal</a>
+      </li>
+      <li>
+        <a href="#">Padrinhos</a>
+      </li>
+      <li>
+        <a href="#">Recepção</a>
+      </li>
+      <li>
+        <a href="#">Lista de Presentes</a>
+      </li>
+    </ul>
+  </div>
+  <div class="footer_menu">
+    <ul>
+      <li><a href="">Entrar</a></li>
+      <li><a href="">Cadastro</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- <a>{{ user.name.split(" ")[0] }}</a> -->

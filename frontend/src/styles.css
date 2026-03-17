@@ -9,3 +9,8 @@
 body {
   background: #fdddde;
 }
+
+a {
+  text-decoration: none;
+  color: #868686;
+}
