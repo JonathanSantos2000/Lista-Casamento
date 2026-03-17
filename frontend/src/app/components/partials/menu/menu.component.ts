@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
-  menu_level: string = 'menu';
+  menu_level: string = 'off';
 
   open_menu() {
     this.menu_level = 'menu';

@@ -16,7 +16,7 @@
   <div class="center_menu">
     <ul>
       <li>
-        <a [routerLink]="['/accounts']" routerLinkActive="router-link-active">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active">
           Home
         </a>
       </li>
@@ -37,7 +37,7 @@
   <div class="footer_menu">
     <ul>
       <li><a href="">Entrar</a></li>
-      <li><a href="">Cadastro</a></li>
+      <li><a [routerLink]="['/auth/registro']" routerLinkActive="router-link-active">Cadastro</a></li>
     </ul>
   </div>
 </div>

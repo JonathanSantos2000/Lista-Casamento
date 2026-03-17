@@ -1,1 +1,67 @@
-<p>register-page works!</p>
+<div class="conteinner__register flex-all-collun-center">
+  <div class="photospace"></div>
+  <div class="us_photo">
+    <img
+      id="bg_aquarela"
+      src="assets/images/bg-aquarela.png"
+      alt="Foto Nossa"
+    />
+    <img id="eu_ela" src="assets/images/eu_ela.png" alt="Foto Nossa" />
+  </div>
+  <div class="form"></div>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="submit()"
+    class="flex-all-collun-center"
+  >
+    <div class="title_logo">
+      <div class="separador_flor">
+        <img src="assets/images/flor.png" alt="Minha Foto" />
+      </div>
+      <h3>Login ou Registro</h3>
+      <div class="toggle-login">
+        <button class="btn login">LOGIN</button>
+        <button class="btn register active">REGISTRAR</button>
+      </div>
+    </div>
+    <!-- Nome -->
+    <text-input
+      [control]="fc['name']"
+      [showErrorWhen]="isSubmitted"
+      type="text"
+      label="Nome:"
+      exibir_label="0"
+    ></text-input>
+
+    <!-- email -->
+    <text-input
+      [control]="fc['email']"
+      [showErrorWhen]="isSubmitted"
+      type="email"
+      label="Email:"
+      exibir_label="0"
+    ></text-input>
+    <div class="senha">
+      <!-- password -->
+      <text-input
+        [control]="fc['password']"
+        [showErrorWhen]="isSubmitted"
+        type="password"
+        label="Senha:"
+        exibir_label="0"
+      ></text-input>
+
+      <!-- confirmPassword -->
+      <text-input
+        [control]="fc['confirmPassword']"
+        [showErrorWhen]="isSubmitted"
+        type="password"
+        label="Confirme a senha:"
+        exibir_label="0"
+      ></text-input>
+    </div>
+    <div class="btns">
+      <button type="submit">Criar</button>
+    </div>
+  </form>
+</div>
