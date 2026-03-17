@@ -1,7 +1,9 @@
 <div class="container__input-group" [ngStyle]="{ 'background-color': bgColor }">
-  <label *ngIf="exibir_label === 1">
-    {{ label }}
-  </label>
+  @if (exibir_label === 1) {
+    <label>
+      {{ label }}
+    </label>
+  }
 
   <div class="content">
     <ng-content></ng-content>

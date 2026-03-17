@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   Input,
@@ -18,7 +18,7 @@ const VALIDATORS_MESSAGES: any = {
 @Component({
   selector: 'app-input-validation',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './input-validation.component.html',
   styleUrl: './input-validation.component.css',
 })
