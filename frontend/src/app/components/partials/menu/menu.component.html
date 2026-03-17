@@ -1,4 +1,8 @@
-<button class="btn-open-menu" (click)="open_menu()" *ngIf="menu_level !== 'menu'">
+<button
+  class="btn-open-menu"
+  (click)="open_menu()"
+  *ngIf="menu_level !== 'menu'"
+>
   <i class="bi bi-list"></i>
 </button>
 <div class="component-menu" *ngIf="menu_level === 'menu'">
@@ -16,7 +20,11 @@
   <div class="center_menu">
     <ul>
       <li>
-        <a [routerLink]="['/']" routerLinkActive="router-link-active">
+        <a
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+          (click)="back_menu()"
+        >
           Home
         </a>
       </li>
@@ -37,7 +45,15 @@
   <div class="footer_menu">
     <ul>
       <li><a href="">Entrar</a></li>
-      <li><a [routerLink]="['/auth/registro']" routerLinkActive="router-link-active">Cadastro</a></li>
+      <li>
+        <a
+          [routerLink]="['/auth/registro']"
+          routerLinkActive="router-link-active"
+          (click)="back_menu()"
+        >
+          Cadastro
+        </a>
+      </li>
     </ul>
   </div>
 </div>
