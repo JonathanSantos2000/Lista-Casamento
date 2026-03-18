@@ -1,9 +1,9 @@
 export class User {
   id!: string;
   UsuNom!: string;
-  UsuEma!: string;
+  UsuEmail!: string;
   UsuSen!: string;
-  UsuPer!: number;
+  UsuCar!: number;
   UsuTok!: string;
   UsuDatCad!: Date;
 }

@@ -1,6 +1,7 @@
-
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../shared/models/user.models';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +13,12 @@ import { RouterModule } from '@angular/router';
 export class MenuComponent {
   menu_level: string = 'off';
 
+  user!: User;
+  constructor(private userService: UserService, private router: Router) {
+    this.userService.user$.subscribe((newUser) => {
+      this.user = newUser!;
+    });
+  }
   open_menu() {
     this.menu_level = 'menu';
   }

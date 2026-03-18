@@ -1,18 +1,17 @@
-@if ((isMobile$ | async)?.matches) {
-  <div class="container mobile">
-    <app-menu></app-menu>
-    <main class="main">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-} @else {
-  <div class="container desktop">
-    <div class="menu">
-      <!-- <app-menu-left></app-menu-left> -->
+@if (isMobile$ | async; as isMobile) {
+  @if (isMobile.matches) {
+    <div class="container mobile">
+      <app-menu></app-menu>
+      <main class="main">
+        <router-outlet></router-outlet>
+      </main>
     </div>
-    <div class="main">
-      <router-outlet></router-outlet>
+  } @else {
+    <div class="container desktop">
+      <div class="menu"></div>
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-  </div>
+  }
 }
-

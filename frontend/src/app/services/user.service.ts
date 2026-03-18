@@ -1,11 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, tap, Observable } from 'rxjs';
+import { User } from '../shared/models/user.models';
+import { IUserLogin } from '../shared/interfaces/IUserLogin';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
+import { IUserRegister } from '../shared/interfaces/IUserRegister';
+import { isPlatformBrowser } from '@angular/common';
+
+const USER_KEY = 'User';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserServiceService {
+export class UserService {
   private readonly http = inject(HttpClient);
   private readonly toastr = inject(ToastrService);
 

@@ -4,31 +4,31 @@ import User, { IUser } from "../models/user.model";
 
 interface IUserInput {
   UsuNom: string;
-  UsuEma: string;
+  UsuEmail: string;
   UsuSen: string;
 }
 
 export const createUser = async ({
   UsuNom,
-  UsuEma,
+  UsuEmail,
   UsuSen,
 }: IUserInput): Promise<IUser> => {
-  const existingUser = await User.findOne({ UsuEma });
+  const existingUser = await User.findOne({ UsuEmail });
   if (existingUser) throw new Error("User already exists");
 
   const hashedPassword = await bcrypt.hash(UsuSen, 10);
-  const user = new User({ UsuNom, UsuEma, UsuSen: hashedPassword });
+  const user = new User({ UsuNom, UsuEmail, UsuSen: hashedPassword });
   return await user.save();
 };
 
 export const loginUser = async ({
-  UsuEma,
+  UsuEmail,
   UsuSen,
 }: {
-  UsuEma: string;
+  UsuEmail: string;
   UsuSen: string;
 }): Promise<IUser> => {
-  const user = await User.findOne({ UsuEma });
+  const user = await User.findOne({ UsuEmail });
   if (!user) throw new Error("Invalid credentials");
 
   const isMatch = await bcrypt.compare(UsuSen, user.UsuSen);

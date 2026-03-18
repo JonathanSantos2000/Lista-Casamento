@@ -11,7 +11,7 @@
     <div class="top_menu">
       <div class="user">
         <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="" />
-        <h3>A & J</h3>
+        <h3>{{ user.UsuNom.split(" ")[0] }}</h3>
       </div>
       <div class="buttons">
         <button class="btn-close-menu" (click)="back_menu()">
@@ -61,4 +61,4 @@
   </div>
 }
 
-<!-- <a>{{ user.name.split(" ")[0] }}</a> -->
+

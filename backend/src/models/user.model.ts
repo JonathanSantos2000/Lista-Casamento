@@ -1,22 +1,16 @@
 import { Schema, model, Document } from "mongoose";
 
 export interface IUser extends Document {
-  UsuId: number;
   UsuNom: string;
   UsuEmail: string;
   UsuSen: string;
   UsuCar: number;
   UsuAti: boolean;
+  UsuDatCad: Date;
 }
 
 const UserSchema = new Schema<IUser>(
   {
-    UsuId: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
-
     UsuNom: {
       type: String,
       required: true,
@@ -43,6 +37,7 @@ const UserSchema = new Schema<IUser>(
       type: Boolean,
       default: true,
     },
+    UsuDatCad: { type: Date, default: Date.now },
   },
   {
     timestamps: true,
