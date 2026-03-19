@@ -26,4 +26,12 @@ export class MenuComponent {
   back_menu() {
     this.menu_level = 'off';
   }
+
+  get isAuth() {
+    return !!this.user?.UsuTok;
+  }
+
+  logout() {
+    this.userService.logout();
+  }
 }

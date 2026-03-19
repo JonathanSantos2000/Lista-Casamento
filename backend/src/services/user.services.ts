@@ -1,11 +1,13 @@
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/user.utils";
 import User, { IUser } from "../models/user.model";
+import type { IUserResponse } from "../interfaces/IUserResponse";
 
 interface IUserInput {
   UsuNom: string;
   UsuEmail: string;
   UsuSen: string;
+  UsuTok: string;
 }
 
 export const createUser = async ({
@@ -27,12 +29,20 @@ export const loginUser = async ({
 }: {
   UsuEmail: string;
   UsuSen: string;
-}): Promise<IUser> => {
+}): Promise<IUserResponse> => {
   const user = await User.findOne({ UsuEmail });
   if (!user) throw new Error("Invalid credentials");
 
   const isMatch = await bcrypt.compare(UsuSen, user.UsuSen);
   if (!isMatch) throw new Error("Invalid credentials");
   const token = generateToken(user);
-  return user;
+  const userObj = user.toObject();
+  // 🔥 remove senha corretamente
+  const { UsuSen: _, ...userSafe } = user.toObject();
+
+  return {
+    ...userSafe,
+    id: user._id.toString(),
+    UsuTok: token,
+  };
 };

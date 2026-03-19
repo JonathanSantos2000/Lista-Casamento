@@ -1,4 +1,4 @@
-<div class="conteinner__register flex-all-collun-center">
+<div class="conteinner__register">
   <div class="photospace"></div>
   <div class="us_photo">
     <img
@@ -9,21 +9,24 @@
     <img id="eu_ela" src="assets/images/eu_ela.png" alt="Foto Nossa" />
   </div>
   <div class="form"></div>
-  <form
-    [formGroup]="registerForm"
-    (ngSubmit)="submit()"
-    class="flex-all-collun-center"
-  >
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
     <div class="title_logo">
       <div class="separador_flor">
         <img src="assets/images/flor.png" alt="Minha Foto" />
       </div>
       <h3>Login ou Registro</h3>
       <div class="toggle-login">
-        <button class="btn login">LOGIN</button>
+        <button class="btn login">
+          <a
+            [routerLink]="['/auth/login']"
+            routerLinkActive="router-link-active"
+          >
+            LOGIN
+          </a>
+        </button>
         <button class="btn register active">REGISTRAR</button>
       </div>
-    </div> 
+    </div>
     <!-- Nome -->
     <text-input
       [control]="fc['name']"

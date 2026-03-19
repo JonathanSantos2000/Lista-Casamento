@@ -8,13 +8,13 @@ import {
 import { TextInputComponent } from '../../../partials/form/text-input/text-input.component';
 import { PasswordMatchValidator } from '../../../../shared/validators/password_match_validator';
 import { IUserRegister } from '../../../../shared/interfaces/IUserRegister';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterLink } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [ReactiveFormsModule, TextInputComponent],
+  imports: [ReactiveFormsModule, TextInputComponent, RouterLink],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css',
 })

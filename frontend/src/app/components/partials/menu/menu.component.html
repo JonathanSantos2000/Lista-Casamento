@@ -1,64 +1,71 @@
 @if (menu_level !== 'menu') {
-  <button
-    class="btn-open-menu"
-    (click)="open_menu()"
-    >
-    <i class="bi bi-list"></i>
-  </button>
-}
-@if (menu_level === 'menu') {
-  <div class="component-menu">
-    <div class="top_menu">
-      <div class="user">
-        <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="" />
-        <h3>{{ user.UsuNom.split(" ")[0] }}</h3>
-      </div>
-      <div class="buttons">
-        <button class="btn-close-menu" (click)="back_menu()">
-          <i class="bi bi-x-lg"></i>
-        </button>
-      </div>
+<button class="btn-open-menu" (click)="open_menu()">
+  <i class="bi bi-list"></i>
+</button>
+} @if (menu_level === 'menu') {
+<div class="component-menu">
+  <div class="top_menu">
+    <div class="user">
+      <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="" />
+      @if (isAuth){
+      <h3>{{ user.UsuNom.split(" ")[0] }}</h3>
+      }
     </div>
-    <div class="center_menu">
-      <ul>
-        <li>
-          <a
-            [routerLink]="['/']"
-            routerLinkActive="router-link-active"
-            (click)="back_menu()"
-            >
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#">O Casal</a>
-        </li>
-        <li>
-          <a href="#">Padrinhos</a>
-        </li>
-        <li>
-          <a href="#">Recepção</a>
-        </li>
-        <li>
-          <a href="#">Lista de Presentes</a>
-        </li>
-      </ul>
-    </div>
-    <div class="footer_menu">
-      <ul>
-        <li><a href="">Entrar</a></li>
-        <li>
-          <a
-            [routerLink]="['/auth/registro']"
-            routerLinkActive="router-link-active"
-            (click)="back_menu()"
-            >
-            Cadastro
-          </a>
-        </li>
-      </ul>
+    <div class="buttons">
+      <button class="btn-close-menu" (click)="back_menu()">
+        <i class="bi bi-x-lg"></i>
+      </button>
     </div>
   </div>
+  <div class="center_menu">
+    <ul>
+      <li>
+        <a
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+          (click)="back_menu()"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#">O Casal</a>
+      </li>
+      <li>
+        <a href="#">Padrinhos</a>
+      </li>
+      <li>
+        <a href="#">Recepção</a>
+      </li>
+      <li>
+        <a href="#">Lista de Presentes</a>
+      </li>
+    </ul>
+  </div>
+  <div class="footer_menu">
+    <ul>
+      @if (!isAuth) {
+      <li>
+        <a
+          [routerLink]="['/auth/login']"
+          routerLinkActive="router-link-active"
+          (click)="back_menu()"
+          >Entrar</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/auth/registro']"
+          routerLinkActive="router-link-active"
+          (click)="back_menu()"
+        >
+          Cadastro
+        </a>
+      </li>
+      }@if (isAuth){
+      <li><a (click)="logout()">Sair</a></li>
+      }
+    </ul>
+  </div>
+</div>
 }
-
-
