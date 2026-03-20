@@ -1,6 +1,4 @@
-
 import { Component, inject, OnInit } from '@angular/core';
-import { HouseService } from '../../../services/house.service';
 
 @Component({
   standalone: true,
@@ -10,7 +8,6 @@ import { HouseService } from '../../../services/house.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  house = inject(HouseService);
   constructor() {}
   ngOnInit(): void {}
 }

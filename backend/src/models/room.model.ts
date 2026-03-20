@@ -1,12 +1,12 @@
 import { Schema, model, Document } from "mongoose";
 
 export interface IRoom extends Document {
-  RooDes: string;
+  RooNom: string;
 }
 
 const RoomSchema = new Schema<IRoom>(
   {
-    RooDes: {
+    RooNom: {
       type: String,
       required: true,
     },

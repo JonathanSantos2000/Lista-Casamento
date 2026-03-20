@@ -57,7 +57,7 @@ export class RegisterPageComponent implements OnInit {
 
     const fv = this.registerForm.value;
     const user: IUserRegister = {
-      UsuNom: fv.name,
+      UsuNom: fv.name.toUpperCase(),
       UsuEmail: fv.email,
       UsuSen: fv.password,
       UsuSenCon: fv.confirmPassword,

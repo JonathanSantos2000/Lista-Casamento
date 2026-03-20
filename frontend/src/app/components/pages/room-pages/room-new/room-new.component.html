@@ -1,0 +1,34 @@
+<div class="conteinner__login">
+  <div class="photospace"></div>
+  <div class="us_photo">
+    <img
+      id="bg_aquarela"
+      src="assets/images/bg-aquarela.png"
+      alt="Foto Nossa"
+    />
+    <img id="eu_ela" src="assets/images/eu_ela.png" alt="Foto Nossa" />
+  </div>
+  <div class="form"></div>
+  <form [formGroup]="roomForm" (ngSubmit)="submit()">
+    <div class="title_logo">
+      <div class="separador_flor">
+        <img src="assets/images/flor.png" alt="Minha Foto" />
+      </div>
+      <h3>Nome do Cômodo</h3>
+
+    </div>
+
+    <!-- Cômodo -->
+    <text-input
+      [control]="fc['comodo']"
+      [showErrorWhen]="isSubmitted"
+      type="text"
+      label="Cômodo:"
+      exibir_label="0"
+    ></text-input>
+    
+    <div class="btns">
+      <button type="submit">Adicionar</button>
+    </div>
+  </form>
+</div>

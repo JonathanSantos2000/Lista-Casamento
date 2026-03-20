@@ -1,4 +1,4 @@
-@if (menu_level !== 'menu') {
+@if (menu_level === 'off') {
 <button class="btn-open-menu" (click)="open_menu()">
   <i class="bi bi-list"></i>
 </button>
@@ -8,7 +8,7 @@
     <div class="user">
       <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="" />
       @if (isAuth){
-      <h3>{{ user.UsuNom.split(" ")[0] }}</h3>
+      <h3>{{ firstName }}</h3>
       }
     </div>
     <div class="buttons">
@@ -19,27 +19,40 @@
   </div>
   <div class="center_menu">
     <ul>
+      @switch (menu_center) {
+      <!-- Usuarios Comuns-->
+      @case ('normal') {
+      <li><a [routerLink]="['/']" (click)="close_menu()">Home</a></li>
+      <li><a href="#">O Casal</a></li>
+      <li><a href="#">Padrinhos</a></li>
+      <li><a href="#">Recepção</a></li>
+      <li><a href="#">Lista de Presentes</a></li>
+      }
+      <!-- Adm Comuns-->
+      @case ('admin') {
+      <li (click)="menuComodo()">Cômodos</li>
+      <li>Presentes</li>
+      }
+      <!-- Menu Cômodos-->
+      @case ('comodo') {
       <li>
-        <a
-          [routerLink]="['/']"
-          routerLinkActive="router-link-active"
-          (click)="back_menu()"
-        >
-          Home
+        <a [routerLink]="['/rooms/room-new']" (click)="close_menu()">
+          Adicionar Cômodos
         </a>
       </li>
       <li>
-        <a href="#">O Casal</a>
+        <a [routerLink]="['/rooms/room-edit']" (click)="close_menu()">
+          Editar Cômodos
+        </a>
       </li>
       <li>
-        <a href="#">Padrinhos</a>
+        <a [routerLink]="['/rooms/room-list']" (click)="close_menu()">
+          Listar Cômodos
+        </a>
       </li>
-      <li>
-        <a href="#">Recepção</a>
-      </li>
-      <li>
-        <a href="#">Lista de Presentes</a>
-      </li>
+      }
+      <!-- Fim Case-->
+      }
     </ul>
   </div>
   <div class="footer_menu">
@@ -49,7 +62,7 @@
         <a
           [routerLink]="['/auth/login']"
           routerLinkActive="router-link-active"
-          (click)="back_menu()"
+          (click)="close_menu()"
           >Entrar</a
         >
       </li>
@@ -57,12 +70,16 @@
         <a
           [routerLink]="['/auth/registro']"
           routerLinkActive="router-link-active"
-          (click)="back_menu()"
+          (click)="close_menu()"
         >
           Cadastro
         </a>
       </li>
       }@if (isAuth){
+      <!-- 🔥 SOMENTE ADMIN -->
+      @if (isAdmin && menu_center === 'normal') {
+      <li (click)="menuAdm()">Configurar</li>
+      }
       <li><a (click)="logout()">Sair</a></li>
       }
     </ul>

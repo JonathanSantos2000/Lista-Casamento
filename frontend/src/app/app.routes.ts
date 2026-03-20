@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
-import { RoomsComponent } from './components/pages/rooms/rooms.component';
-import { PresenteComponent } from './components/pages/presente/presente.component';
 import { RegisterPageComponent } from './components/pages/auth/register-page/register-page.component';
 import { LoginPageComponent } from './components/pages/auth/login-page/login-page.component';
+import { RoomNewComponent } from './components/pages/room-pages/room-new/room-new.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'ambiente/:id', component: RoomsComponent },
-  { path: 'presente/:id', component: PresenteComponent },
+  { path: 'rooms/room-new', component: RoomNewComponent },
+  { path: 'rooms/room-edit', component: RoomNewComponent },
+  { path: 'rooms/room-list', component: RoomNewComponent },
   { path: 'auth/registro', component: RegisterPageComponent },
   { path: 'auth/login', component: LoginPageComponent },
 ];
