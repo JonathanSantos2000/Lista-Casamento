@@ -56,9 +56,16 @@ export class RoomNewComponent implements OnInit {
       UsuCar: this.user.UsuCar!,
     };
 
-    this.roomService.CreateRoom(room).subscribe((_) => {
-      this.roomForm.reset();
-      this.fc['comodo'].setValue('')
+    this.roomService.CreateRoom(room).subscribe({
+      next: (res) => {
+        console.log('Sucesso', res);
+        this.roomForm.reset();
+        this.fc['comodo'].setValue('');
+      },
+      error: (err) => {
+        console.log('Erro', err);
+      },
     });
+    
   }
 }

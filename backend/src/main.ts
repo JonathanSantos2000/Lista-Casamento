@@ -6,6 +6,7 @@ import cors from "cors";
 import { dbConnect } from "./configs/database.config";
 import userRoutes from "./routers/user.router";
 import roomRoutes from "./routers/room.router";
+import furnitureRoutes from "./routers/furnitures.router";
 
 dbConnect();
 
@@ -20,6 +21,7 @@ app.use(
 
 app.use("/api/user", userRoutes);
 app.use("/api/room", roomRoutes);
+app.use("/api/furniture", furnitureRoutes);
 
 const port = 5000;
 app.listen(port, () => {

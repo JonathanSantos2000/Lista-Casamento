@@ -12,7 +12,7 @@ import { User } from '../../../shared/models/user.models';
 })
 export class MenuComponent {
   menu_level: 'off' | 'menu' = 'off';
-  menu_center: 'normal' | 'admin' | 'comodo' = 'normal';
+  menu_center: 'normal' | 'admin' | 'comodo' | 'presentes' = 'normal';
 
   user!: User;
   constructor(private userService: UserService, private router: Router) {
@@ -57,6 +57,8 @@ export class MenuComponent {
       this.menu_center = 'normal';
     } else if (this.menu_center === 'comodo') {
       this.menu_center = 'admin';
+    } else if (this.menu_center === 'presentes') {
+      this.menu_center = 'admin';
     }
   }
 
@@ -67,7 +69,9 @@ export class MenuComponent {
   menuComodo() {
     this.menu_center = 'comodo';
   }
-
+  menuPresente() {
+    this.menu_center = 'presentes';
+  }
   logout() {
     this.userService.logout();
   }

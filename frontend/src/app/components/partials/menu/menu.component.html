@@ -26,12 +26,16 @@
       <li><a href="#">O Casal</a></li>
       <li><a href="#">Padrinhos</a></li>
       <li><a href="#">Recepção</a></li>
-      <li><a href="#">Lista de Presentes</a></li>
+      <li>
+        <a [routerLink]="['/presentes/lista-de-presentes']" (click)="close_menu()">
+          Lista de Presentes
+        </a>
+      </li>
       }
       <!-- Adm Comuns-->
       @case ('admin') {
       <li (click)="menuComodo()">Cômodos</li>
-      <li>Presentes</li>
+      <li (click)="menuPresente()">Presentes</li>
       }
       <!-- Menu Cômodos-->
       @case ('comodo') {
@@ -48,6 +52,14 @@
       <li>
         <a [routerLink]="['/rooms/room-list']" (click)="close_menu()">
           Listar Cômodos
+        </a>
+      </li>
+      }
+      <!-- Menu Presentes-->
+      @case ('presentes') {
+      <li>
+        <a [routerLink]="['/presentes/presentes-new']" (click)="close_menu()">
+          Adicionar Presentes
         </a>
       </li>
       }
