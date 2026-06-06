@@ -1,5 +1,5 @@
 export interface IFurnRegister {
-  FurDes: string;
+  FurNom: string;
   FurRooms: IRoomInput[];
 
   FurVlrIte: number;
@@ -8,7 +8,7 @@ export interface IFurnRegister {
 
   FurImgPath: string;
   FurImgLocal: boolean;
-  
+
   _id: string;
   UsuCar: Number;
 }

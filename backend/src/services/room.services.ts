@@ -10,3 +10,8 @@ export const createRoom = async ({ RooNom }: IRoomInput): Promise<IRoom> => {
   const room = new Room({ RooNom });
   return await room.save();
 };
+
+
+export const getAllRooms = async (): Promise<IRoom[]> => {
+  return await Room.find();
+};

@@ -12,4 +12,6 @@ router.post(
   roomController.register
 );
 
+router.get("/", authMiddleware, roleMiddleware([1]), roomController.getAllRooms);
+
 export default router;
