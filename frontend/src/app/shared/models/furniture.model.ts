@@ -1,6 +1,6 @@
 export class Furniture {
   _id!: string;
-  FurNom!: string;
+  FurDes!: string;
   FurRooms!: IRoomInput[];
 
   FurVlrIte!: number;

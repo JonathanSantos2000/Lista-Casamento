@@ -1,7 +1,8 @@
 import Furniture, { IFurniture } from "../models/furniture.model";
 
 interface IRoomInput {
-  _Id: string;
+  FurComId: string;
+  FurComDes: string;
 }
 
 interface IFurnitureInput {
@@ -11,9 +12,7 @@ interface IFurnitureInput {
   FurVlrIte: number;
   FurVlrAre: number;
   FurVlrPer: number;
-
-  FurImgPath: string;
-  FurImgLocal: boolean;
+  FurImg: string;
 }
 
 export const createFurniture = async ({
@@ -22,20 +21,19 @@ export const createFurniture = async ({
   FurVlrIte,
   FurVlrAre,
   FurVlrPer,
-  FurImgPath,
-  FurImgLocal,
+  FurImg,
 }: IFurnitureInput): Promise<IFurniture> => {
   const existingFurniture = await Furniture.findOne({ FurDes });
 
   if (existingFurniture) throw new Error("Furniture already exists");
+
   const furniture = new Furniture({
     FurDes,
     FurRooms,
     FurVlrIte,
     FurVlrAre,
     FurVlrPer,
-    FurImgPath,
-    FurImgLocal,
+    FurImg,
   });
   return await furniture.save();
 };

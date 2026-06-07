@@ -7,7 +7,6 @@ import {
   GET_ALL_FURNITURES_URL,
 } from '../shared/constants/urls';
 import { tap, Observable } from 'rxjs';
-import { IFurnRegister } from '../shared/interfaces/IFurnitureRegister';
 
 @Injectable({
   providedIn: 'root',
@@ -15,24 +14,19 @@ import { IFurnRegister } from '../shared/interfaces/IFurnitureRegister';
 export class FurnitureService {
   constructor(private http: HttpClient, private toastrService: ToastrService) {}
 
-  CreateRoom(furnitureRegister: IFurnRegister): Observable<Furniture> {
-    return this.http
-      .post<Furniture>(FURNITURES_REGISTER_URL, furnitureRegister)
-      .pipe(
-        tap({
-          next: (furniture) => {
-            this.toastrService.success(
-              `Presentes: ${furniture.FurNom} registrada com sucesso`
-            );
-          },
-          error: (errorResponse) => {
-            this.toastrService.error(errorResponse.error, ' registro falhou');
-          },
-        })
-      );
+  CreateFurniture(formData: FormData): Observable<Furniture> {
+    return this.http.post<Furniture>(FURNITURES_REGISTER_URL, formData).pipe(
+      tap({
+        next: (furniture) => {
+          this.toastrService.success(
+            `Presentes: ${furniture.FurDes} registrada com sucesso`
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, ' registro falhou');
+        },
+      })
+    );
   }
 
-  getAllRooms(): Observable<Furniture[]> {
-    return this.http.get<Furniture[]>(GET_ALL_FURNITURES_URL);
-  }
 }

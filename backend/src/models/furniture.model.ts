@@ -12,9 +12,7 @@ export interface IFurniture extends Document {
   FurVlrIte: number;
   FurVlrAre: number;
   FurVlrPer: number;
-
-  FurImgPath: string;
-  FurImgLocal: boolean;
+  FurImg: string;
 }
 
 const FurnitureSchema = new Schema<IFurniture>(
@@ -52,13 +50,9 @@ const FurnitureSchema = new Schema<IFurniture>(
       type: Number,
       default: 0,
     },
-    FurImgPath: {
+    FurImg: {
       type: String,
       required: true,
-    },
-    FurImgLocal: {
-      type: Boolean,
-      default: false,
     },
   },
   {

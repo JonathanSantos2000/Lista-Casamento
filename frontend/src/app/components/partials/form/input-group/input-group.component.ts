@@ -15,4 +15,6 @@ export class InputGroupComponent {
   bgColor: string = 'none';
   @Input()
   exibir_label: number = 0;
+  @Input()
+  customClass: string = '';
 }

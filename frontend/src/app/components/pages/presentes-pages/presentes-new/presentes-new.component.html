@@ -16,22 +16,47 @@
       </div>
       <h3>Cadastro de Presentes.</h3>
     </div>
+    <!--  -->
+    <div class="gift-image-container">
+      <label class="gift-image-upload">
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          hidden
+        />
+
+        <!--  -->
+        @if (imagePreview) {
+        <img [src]="imagePreview" alt="Produto" class="gift-preview" />
+        }
+        <!--  -->
+        @if (!imagePreview) {
+        <div class="upload-placeholder">
+          <span class="upload-icon">📷</span>
+          <span>Adicionar foto do presente</span>
+        </div>
+        }
+      </label>
+    </div>
     <!-- Nome -->
     <text-input
-      [control]="fc['FurNom']"
+      [control]="fc['FurDes']"
       [showErrorWhen]="isSubmitted"
       type="text"
       label="Nome Produto:"
       exibir_label="0"
+      customClass="normal__input"
     ></text-input>
 
-    <!-- email -->
+    <!-- Valor -->
     <text-input
       [control]="fc['FurVlrIte']"
       [showErrorWhen]="isSubmitted"
       type="number"
       label="VALOR DO PRODUTO R$:"
       exibir_label="0"
+      customClass="normal__input"
     ></text-input>
 
     <!-- Comodos -->
@@ -45,15 +70,24 @@
           type="text"
           label="Nome do Cômodo:"
           exibir_label="0"
+          customClass="search__input"
         ></text-input>
 
-        <button type="button" (click)="buscarItensPorNome()">
+        <button
+          type="button"
+          (click)="buscarItensPorNome()"
+          class="search__button"
+        >
           <i class="bi bi-search"></i>
         </button>
       </div>
 
-      <select formControlName="FurRooms" (change)="onRoomSelect($event)">
-        <option value="">Selecione o Cômodo</option>
+      <select
+        formControlName="FurRooms"
+        (change)="onRoomSelect($event)"
+        class="comodo_select"
+      >
+        <option value="">SELECIONE O CÔMODO</option>
         @for (room of roomsFiltered; track room.RooNom) {
         <option [value]="room.RooNom">
           {{ room.RooNom }}
