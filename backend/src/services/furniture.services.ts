@@ -37,3 +37,19 @@ export const createFurniture = async ({
   });
   return await furniture.save();
 };
+
+interface IPaginacaoInput {
+  skip: number;
+  limit: number;
+}
+
+export const getAllFurnitures = async ({
+  skip,
+  limit,
+}: IPaginacaoInput): Promise<IFurniture[]> => {
+  return Furniture.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+};
+
+export const countFurnitures = async () => {
+  return Furniture.countDocuments();
+};

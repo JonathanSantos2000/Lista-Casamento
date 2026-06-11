@@ -13,12 +13,34 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       FurVlrPer: 0,
       FurImg: file?.filename || "",
     };
-    console.log("FILE:", req.file);
-    console.log("BODY:", req.body);
-    
     const furniture = await furnitureService.createFurniture(payload);
 
     res.status(201).json(furniture);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export const getAllFurnitures = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const furnitures = await furnitureService.getAllFurnitures({ skip, limit });
+
+    const total = await furnitureService.countFurnitures();
+
+    res.status(200).json({
+      furnitures,
+      total,
+      page,
+      totalPages: Math.ceil(total / limit),
+    });
   } catch (error: any) {
     res.status(400).json({ error: error.message });
   }

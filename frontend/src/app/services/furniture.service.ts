@@ -7,6 +7,7 @@ import {
   GET_ALL_FURNITURES_URL,
 } from '../shared/constants/urls';
 import { tap, Observable } from 'rxjs';
+import type { FurniturePagination } from '../shared/interfaces/IFurniturePagination';
 
 @Injectable({
   providedIn: 'root',
@@ -29,4 +30,9 @@ export class FurnitureService {
     );
   }
 
+  GetAllFurnitures(page: number = 1): Observable<FurniturePagination> {
+    return this.http.get<FurniturePagination>(
+      `${GET_ALL_FURNITURES_URL}?page=${page}&limit=10`
+    );
+  }
 }

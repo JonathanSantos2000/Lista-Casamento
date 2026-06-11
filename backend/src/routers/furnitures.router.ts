@@ -15,4 +15,6 @@ router.post(
   furnitureController.register
 );
 
+router.get("/", furnitureController.getAllFurnitures);
+
 export default router;

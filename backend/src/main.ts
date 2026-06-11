@@ -7,6 +7,7 @@ import { dbConnect } from "./configs/database.config";
 import userRoutes from "./routers/user.router";
 import roomRoutes from "./routers/room.router";
 import furnitureRoutes from "./routers/furnitures.router";
+import path from "path";
 
 dbConnect();
 
@@ -22,6 +23,7 @@ app.use(
 app.use("/api/user", userRoutes);
 app.use("/api/room", roomRoutes);
 app.use("/api/furniture", furnitureRoutes);
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 const port = 5000;
 app.listen(port, () => {

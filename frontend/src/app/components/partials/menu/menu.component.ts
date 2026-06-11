@@ -42,7 +42,6 @@ export class MenuComponent {
   // =========================
   open_menu() {
     this.menu_level = 'menu';
-    console.log(this.user.id);
   }
 
   close_menu() {

@@ -7,10 +7,10 @@ export class Furniture {
   FurVlrAre!: number;
   FurVlrPer!: number;
 
-  FurImgPath!: string;
-  FurImgLocal!: boolean;
+  FurImg!: string;
 }
 
 interface IRoomInput {
-  _Id: string;
+  FurComId: string;
+  FurComDes: string;
 }
